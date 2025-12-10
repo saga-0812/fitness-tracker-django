@@ -1,0 +1,33 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+<h2>My Workouts</h2>
+
+<div class="summary">
+    Total Duration: {{ total_duration }} minutes |
+    Total Calories: {{ total_calories }} kcal
+</div>
+
+{% if workouts %}
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Duration (min)</th>
+        <th>Calories</th>
+        <th>Notes</th>
+    </tr>
+    {% for workout in workouts %}
+    <tr>
+        <td>{{ workout.date }}</td>
+        <td>{{ workout.get_workout_type_display }}</td>
+        <td>{{ workout.duration_minutes }}</td>
+        <td>{{ workout.calories_burned }}</td>
+        <td>{{ workout.notes|default:"-" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No workouts added yet. <a href="{% url 'add_workout' %}">Add your first workout</a>!</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="{% static 'tracker/style.css' %}">
+
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .navbar a { margin-right: 15px; text-decoration: none; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f5f5f5; }
+        .summary { margin-top: 10px; font-weight: bold; }
+        .container { max-width: 800px; margin: auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'add_workout' %}">Add Workout</a>
+    </div>
+    <hr>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
